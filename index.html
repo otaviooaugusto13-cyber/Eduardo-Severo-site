@@ -69,22 +69,39 @@
     .hero { display: flex; align-items: center; min-height: 85vh; padding: 60px 0; gap: 40px; }
     .hero-content { flex: 1; }
 
-    /* CSS da Montagem */
+    /* *** CÓDIGO ATUALIZADO PARA CORRIGIR O POSICIONAMENTO DO CORPO *** */
     .hero-image-wrapper {
-      flex: 1; position: relative; display: flex; justify-content: flex-end; height: 600px;
+      flex: 1; 
+      position: relative; 
+      display: flex; 
+      justify-content: flex-end; 
+      align-items: flex-end; /* ANCORA A IMAGEM NA PARTE DE BAIXO */
+      height: 600px; /* Mantive a altura para manter a seção Hero alta */
     }
     .montagem-container {
-      position: relative; width: 450px; height: 100%;
+      position: relative; 
+      width: 450px; /* Mantém a largura base */
+      height: 550px; /* Altura ajustada para caber o corpo */
     }
     .img-corpo {
-      width: 100%; height: auto; object-fit: cover; filter: contrast(1.1) brightness(0.9);
+      width: 100%; 
+      height: 100%; /* Ocupa 100% da nova altura do container */
+      object-fit: contain; /* ALTERADO: Usa 'contain' para mostrar a imagem inteira sem cortes */
+      filter: contrast(1.1) brightness(0.9);
       mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
     }
     .img-rosto {
-      position: absolute; width: 130px; height: 140px; border-radius: 50%; object-fit: cover;
-      /* POSICIONAMENTO MANUAL - AJUSTE AQUI SE NECESSÁRIO */
-      top: 55px; left: 175px; 
-      z-index: 10; box-shadow: 0 10px 20px rgba(0,0,0,0.5); border: 2px solid rgba(0,0,0,0.2);
+      position: absolute; 
+      width: 130px; 
+      height: 140px; 
+      border-radius: 50%; 
+      object-fit: cover;
+      /* NOVO POSICIONAMENTO MANUAL: AJUSTADO PARA O NOVO TAMANHO DO CORPO (Montagem-Container 550px) */
+      top: 15px; /* Subi o rosto */
+      left: 175px; 
+      z-index: 10; 
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5); 
+      border: 2px solid rgba(0,0,0,0.2);
     }
     
     /* --- Módulos (Grid) --- */
@@ -123,8 +140,8 @@
       
       .hero { flex-direction: column-reverse; text-align: center; }
       .hero-image-wrapper { justify-content: center; height: auto; }
-      .montagem-container { width: 300px; }
-      .img-rosto { width: 85px; height: 95px; top: 38px; left: 118px; }
+      .montagem-container { width: 300px; height: 400px; /* Ajuste para mobile */ }
+      .img-rosto { width: 85px; height: 95px; top: 10px; left: 107px; /* NOVO AJUSTE MOBILE */ }
       h1 { font-size: 2.5rem; }
       .form-grid { grid-template-columns: 1fr; }
     }
